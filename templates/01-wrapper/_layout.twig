@@ -1,0 +1,60 @@
+{% set siteTitle = siteTitle|default('Change me') %}
+<!DOCTYPE html>
+<!-- build:cms-->
+{% set stamp = ".1530823019326" %}
+<!-- endbuild-->
+<html lang="en-gb" dir="ltr" class="no-js">
+  <head>
+	  <meta charset="utf-8">
+    <title>{{ siteTitle }}</title>
+	  <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit="cover">
+		{# Robots blocking for staging URLs #}
+		{{ 'mudbank' in siteUrl ? '<meta name="robots" content="noindex, nofollow">' : '' }}
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#cb1d18">
+		<meta name="theme-color" content="#cb1d18">
+		<meta content="telephone=no" name="format-detection">
+	  <script>var html=document.getElementsByTagName("html")[0];html.classList?html.classList.remove("no-js"):html.className=el.className.replace(new RegExp("(^|\\b)"+className.split(" ").join("|")+"(\\b|$)","gi")," ");</script>
+
+		<!--# if expr="$HTTP_COOKIE=/critical\-css\=1/" -->
+    {{ craft.twigpack.includeCssModule("styles.css", false) }}
+		<!--# else -->
+		<script>
+				Cookie.set("critical-css", '1', { expires: "7D", secure: true });
+		</script>
+		{{ craft.twigpack.includeCriticalCssTags() }}
+
+		{{ craft.twigpack.includeCssModule("styles.css", true) }}
+		{{ craft.twigpack.includeCssRelPreloadPolyfill() }}
+		<!--# endif -->
+		<script>
+			if(!window.HTMLPictureElement || !('sizes' in document.createElement('img'))){
+				document.createElement('picture');
+				loadjs("/dist/js/picturefill.min.js");
+			}
+			loadCSS('//fonts.googleapis.com/css?family=Roboto')
+		</script>
+  </head>
+
+  <body>
+		<main id="page-wrapper">
+			<div class="page-child">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</main>
+
+		<script>
+			loadjs([
+				'//polyfill.io/v2/polyfill.min.js?features=default-3.6,IntersectionObserver,es6,Object.entries'
+			], {async: false})
+		</script>
+
+		{{ craft.twigpack.includeSafariNomoduleFix() }}
+		{{ craft.twigpack.includeJsModule("app.js", true) }}
+  </body>
+</html>
