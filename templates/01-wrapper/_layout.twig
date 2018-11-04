@@ -1,10 +1,20 @@
 {% set siteTitle = siteTitle|default('Change me') %}
+{% set baseUrl = alias('@baseUrl') ~ '/' %}
 <!DOCTYPE html>
 <!-- build:cms-->
 {% set stamp = ".1530823019326" %}
 <!-- endbuild-->
-<html lang="en-gb" dir="ltr" class="no-js">
+<!--# if expr="$HTTP_COOKIE=/fonts\-loaded\=1/" -->
+<html class="fonts-loaded" lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<!--# else -->
+<html lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<!--# endif -->
   <head>
+		<link rel="dns-prefetch" href="{{ baseUrl }}">
+    <link rel="preconnect" href="{{ baseUrl }}" crossorigin>
+
+		{% import "macros/helpers" as macro %}
+
 	  <meta charset="utf-8">
     <title>{{ siteTitle }}</title>
 	  <meta name="description" content="">
@@ -20,14 +30,19 @@
 		<meta content="telephone=no" name="format-detection">
 	  <script>var html=document.getElementsByTagName("html")[0];html.classList?html.classList.remove("no-js"):html.className=el.className.replace(new RegExp("(^|\\b)"+className.split(" ").join("|")+"(\\b|$)","gi")," ");</script>
 
+		{# -- ServiceWorker, loadjs, and tiny-cookie -- #}
+		<script>
+			{% if craft.app.config.general.isSystemOn %}
+				{{ source("_inlinejs/register-service-worker.js") }}
+			{% endif %}
+			{{ source("_inlinejs/loadjs.js") }}
+			{{ source("_inlinejs/tab-handler.js") }}
+		</script>
+
 		<!--# if expr="$HTTP_COOKIE=/critical\-css\=1/" -->
     {{ craft.twigpack.includeCssModule("styles.css", false) }}
 		<!--# else -->
-		<script>
-				Cookie.set("critical-css", '1', { expires: "7D", secure: true });
-		</script>
 		{{ craft.twigpack.includeCriticalCssTags() }}
-
 		{{ craft.twigpack.includeCssModule("styles.css", true) }}
 		{{ craft.twigpack.includeCssRelPreloadPolyfill() }}
 		<!--# endif -->
@@ -36,13 +51,13 @@
 				document.createElement('picture');
 				loadjs("/dist/js/picturefill.min.js");
 			}
-			loadCSS('//fonts.googleapis.com/css?family=Roboto')
+			{# loadCSS('//fonts.googleapis.com/css?family=Roboto') #}
 		</script>
   </head>
 
   <body>
 		<main id="page-wrapper">
-			<div class="page-child">
+			<div class="page-children">
 				{% block content %}
 				{% endblock %}
 			</div>

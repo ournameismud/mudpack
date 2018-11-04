@@ -1,0 +1,10 @@
+{
+  "vendors~confetti~vue.js": "/src/js/vendors~confetti~vue.js",
+  "vendors~confetti~vue.js.map": "/src/js/vendors~confetti~vue.js.map",
+  "app.js": "/src/js/app.js",
+  "app.js.map": "/src/js/app.js.map",
+  "confetti.js": "/src/js/confetti.js",
+  "confetti.js.map": "/src/js/confetti.js.map",
+  "../sw.js": "/src/../sw.js",
+  "js/precache-manifest.js": "/src/js/precache-manifest.js"
+}
