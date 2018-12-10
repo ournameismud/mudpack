@@ -24,7 +24,6 @@ async function init() {
 		// @property {Object} classes - clases applied to active links
 		// @property {Function} onExit - called before the dom is updated
 		// @property {Function} function - called after the dom is updated
-
 		router: {
 			routes: routes.default,
 			rootNode: document.getElementById('page-wrapper'),

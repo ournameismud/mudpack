@@ -21,6 +21,10 @@
 - clone the repo
 - install the dependencies (npm install / yarn)
 - run `npm run gen-cert` to create https tokens
+- add an empty database via Sequel Pro
+- update your `env` file to include local DB details
+- `cd` into your `deploy` folder and run `composer update`
+- create a MAMP or Valet instance that points to your local domain
 - `npm run start` will boot up the cms server
 - `npm run build` will create a production build to use with craftcms
 
