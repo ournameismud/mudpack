@@ -1,31 +1,5 @@
-{% set companiesIntro = companiesIntro|default(null) %}
-{% set companiesLinks = companiesLinks|default(null) %}
+{% set variable = variable|default(null) %}
 
-<section class="c-companies-intro-section relative bg-white md:min-h-screen md:flex md:items-center" id="company-intro">
-	<div class="wrapper relative z-10">
-		<div class="c-companies-intro md:items-start flex flex-wrap -ml-1-5 justify-between pt-2-5 pb-8 md:py-8">
-			{% if companiesIntro %}
-			<div class="w-full pl-1-5 md:w-6/12 text-xl md:-mt-1">
-				{{ companiesIntro|nl2br }}
-			</div>
-			{% endif %}
-			{% if companiesLinks %}
-			<div class="w-full pl-1-5 md:w-4/12 pt-2 md:pt-0">
-				{% for company in companiesLinks %}
-					{% set companyLink = company.companyLink|default(null) %}
-					
-					{% if companyLink %}
-					<a class="c-companies-intro__link block cursor-pointer mb-1 md:mb-1-5" href="{{ companyLink }}">
-						{{ svg('@webroot/resources/company-logos/' ~ company.companyLogo) }}
-					</a>
-					{% else %}
-					<div class="block mb-1 md:mb-1-5">
-						{{ svg('@webroot/resources/company-logos/' ~ company.companyLogo) }}
-					</div>
-					{% endif %}
-				{% endfor %}
-			</div>
-			{% endif %}
-		</div>
-	</div>
-</section>
+{% if variable %}
+	{{ variable }}
+{% endif %}

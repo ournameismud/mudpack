@@ -2,7 +2,7 @@
 {% set baseUrl = alias('@baseUrl') ~ '/' %}
 <!DOCTYPE html>
 <!-- build:cms-->
-{% set stamp = ".1544006707924" %}
+{% set stamp = "" %}
 <!-- endbuild-->
 <html lang="en-gb" dir="ltr" class="no-js">
   <head>
@@ -48,15 +48,15 @@
 		</script>
   </head>
 
-  <body class="relative">
+  <body>
 		{% set mainLinks = [
+			{
+				text: 'Home',
+				url: siteUrl
+			},
 			{
 				text: 'About',
 				url: siteUrl ~ 'about'
-			},
-			{
-				text: 'Services',
-				url: siteUrl ~ 'services'
 			},
 			{
 				text: 'Team',
@@ -77,7 +77,7 @@
 			</div>
 		</main>
 		{% include '/global/_footer' %}
-		{% include '/objects/_pattern' %}
+
 		{% include '_svgs/symbols' %}
 		<script>
 			loadjs([

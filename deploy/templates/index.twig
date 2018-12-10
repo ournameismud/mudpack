@@ -1,0 +1,17 @@
+{% set entry = entry|default(null) %}
+
+{% embed '/wrapper/_layout' with {
+  critical: entry.type.handle ~ '.css'|default('homepage.css')
+} %}
+
+{# {% set data = fetchData(url('api/pages/example')) %} #}
+
+{% block content %}
+
+{# Example #}
+{% include '/components/_example.twig' with {
+	variable: 'value'
+} %}
+
+{% endblock %}
+{% endembed %}
