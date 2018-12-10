@@ -1,0 +1,58 @@
+.c-hero {
+}
+
+.c-hero__inner {
+	@apply py-2-5;
+
+	@screen md {
+		@apply py-8;
+	}
+}
+
+.c-hero__description {
+	font-size: responsive 22px 23px;
+	line-height: 1.347826087;
+}
+
+.c-hero--full {
+	@apply flex items-center;
+
+	min-height: calc(100vh - 76px);
+
+	@screen lg {
+		min-height: calc(100vh - 90px);
+	}
+
+	// .h2 {
+	// 	@screen sm {
+	// 		white-space: nowrap;
+	// 	}
+	// }
+
+	br {
+		@apply hidden;
+
+		@screen sm {
+			@apply block;
+		}
+	}
+}
+
+.c-hero--skinny {
+	.c-hero__inner {
+		@apply py-2;
+	}
+}
+
+// .c-hero__pattern {
+// 	background-image: url('/dist/img/svg/tile.svg');
+// 	background-repeat: repeat;
+// }
+
+.c-hero__down-arrow {
+	transition: opacity 300ms;
+
+	@screen lg {
+		padding-bottom: 4.875rem;
+	}
+}

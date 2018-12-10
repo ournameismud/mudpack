@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Berlingske Serif Light';
+	font-display: auto;
+	src: url('/fonts/BerlingskeSerif-Lt.woff2') format('woff2'),
+		url('/fonts/BerlingskeSerif-Lt.woff') format('woff');
+	font-style: normal;
+	font-weight: 400;
+}

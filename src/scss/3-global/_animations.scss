@@ -1,0 +1,22 @@
+[data-animate='hero'] {
+	opacity: 0;
+	transform: translateY(15px);
+	transition: transform 500ms ease-out, opacity 400ms;
+
+	[data-transition-state='on-load'] &,
+	[data-transition-state='done'] & {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.no-js & {
+		animation: animateIn 500ms forwards 500ms;
+	}
+}
+
+@keyframes animateIn {
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

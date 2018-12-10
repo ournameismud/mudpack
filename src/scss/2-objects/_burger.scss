@@ -1,0 +1,49 @@
+.o-burger {
+	@apply relative block;
+
+	width: rem(76px);
+	height: rem(76px);
+}
+
+.o-burger > span {
+	@apply m-auto;
+
+	transition: transform 300ms, background-color 300ms;
+	transform: translateY(0);
+
+	&,
+	&::before,
+	&::after {
+		@apply bg-white absolute pin m-auto;
+
+		width: rem(32px);
+		height: rem(1px);
+		z-index: 21;
+	}
+
+	&::before,
+	&::after {
+		transition: transform 300ms;
+		content: ' ';
+	}
+
+	&::before {
+		transform: translateY(-6px);
+	}
+
+	&::after {
+		transform: translateY(6px);
+	}
+}
+
+.o-burger.is-active > span {
+	@apply bg-transparent;
+
+	&::before {
+		transform: translateY(0) rotate(45deg);
+	}
+
+	&::after {
+		transform: translateY(0) rotate(-45deg);
+	}
+}

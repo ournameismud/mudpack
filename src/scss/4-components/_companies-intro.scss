@@ -1,0 +1,33 @@
+.c-companies-intro-section {
+	@apply relative;
+
+	&::after {
+		@apply absolute pin w-full h-full;
+
+		content: '';
+		background-image: linear-gradient(
+			to bottom,
+			rgba(#e7ecf0, 0.5) 0%,
+			rgba(#e7ecf0, 1) 100%
+		);
+		z-index: 1;
+	}
+}
+
+.c-companies-intro__link {
+	transition: opacity 200ms;
+}
+
+.c-companies-intro__link:hover {
+	opacity: 0.5;
+}
+
+.c-companies-intro__bg {
+	@apply absolute pin w-full h-full z-0;
+
+	background-image: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0.5) 0%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}

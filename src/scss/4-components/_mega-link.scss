@@ -1,0 +1,16 @@
+.c-mega-link {
+	transition: background-color 300ms, color 300ms;
+}
+
+.c-mega-link:hover {
+	.c-mega-link__text {
+		background-image: linear-gradient(to right, #202020 0%, #202020 100%);
+	}
+}
+
+.c-mega-link__text {
+	background-image: linear-gradient(to right, transparent 0%, transparent 100%);
+	background-repeat: repeat-x; // make it horizontal
+	background-position: 0 95%; // change the second value to adjust how far from the top the underline should be
+	background-size: 100% 2px; // change the second value to the desired height of the underline
+}

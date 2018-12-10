@@ -1,0 +1,99 @@
+html:not(.-is-user-tabbing) button:focus {
+	outline: 0;
+}
+
+.o-form {
+}
+
+.o-form__group {
+	@apply mb-0-5 items-center justify-start w-full;
+
+	@screen md {
+		@apply flex mb-1;
+	}
+}
+
+.o-label {
+	@apply block mb-0-25 leading-none;
+
+	font-size: responsive 18px 23px;
+	min-width: 126px;
+
+	@screen md {
+		@apply mb-0;
+	}
+}
+
+.o-input {
+	@apply appearance-none border border-grey bg-transparent w-full py-0-5 px-0-5 max-w-full text-white;
+
+	min-height: rem(32px);
+	transition: background-color 200ms;
+
+	&:focus {
+		outline: 0;
+
+		@apply bg-black;
+	}
+}
+
+.o-input__group {
+	@apply w-full;
+}
+
+.o-checkbox__box {
+	@apply block flex items-center;
+
+	&::before {
+		@apply .border-2 .mr-1;
+
+		width: rem(15px);
+		height: rem(15px);
+		content: ' ';
+	}
+}
+
+.o-radio {
+	@apply appearance-none opacity-0 w-px h-px float-left absolute;
+
+	&:checked + .c-radio__box {
+		&::before {
+			@apply .bg-blue;
+		}
+	}
+}
+
+.o-radio__box {
+	@apply block flex items-center;
+
+	&::before {
+		@apply .border-2 .rounded-full .shadow-none .mr-1;
+
+		transition: background-color 300ms ease;
+		width: rem(15px);
+		height: rem(15px);
+		content: ' ';
+	}
+}
+
+.o-textarea {
+	@apply p-0-5 border border-grey resize-none w-full;
+
+	transition: background-color 200ms;
+}
+
+.o-form__success {
+	@apply absolute pin h-full w-full border border-grey flex items-center justify-center opacity-0 text-white z-0 pointer-events-none;
+}
+
+.o-form__content {
+	@apply relative z-10;
+}
+
+.form__error {
+	@apply block bg-white text-red leading-tight;
+}
+
+.form__error.has-error {
+	@apply px-0-5 py-0-25;
+}

@@ -1,0 +1,72 @@
+{% set companyAddress = companyInformation.companyAddress|default(null) %}
+{% set companyPhoneNumber = companyInformation.companyPhoneNumber|default(null) %}
+{% set companyEmailAddress = companyInformation.companyEmailAddress|default(null) %}
+{% set footerMetaLinks = craft.entries.section('extraPages').all()|default(null) %}
+{% set footerNote = siteFooter.plainText|default(null) %}
+{% set otherSiteLinks = [
+	{
+		text: 'Sentinel Global',
+		url: '#0',
+		target: null
+	},
+	{
+		text: 'SG Financial',
+		url: '#0',
+		target: null
+	},
+	{
+		text: 'Swiss Global',
+		url: '#0',
+		target: null
+	}
+] %}
+
+<footer class="footer w-full bg-black text-white py-1 md:py-3-5 relative z-10 mt-auto">
+	<div class="wrapper">
+		<div class="w-full lg:w-11/12">
+			<div class="flex flex-wrap -ml-1-5">
+				<div class="w-full md:w-6/12 lg:w-6/11 pl-1-5 mb-1-5">
+					{% if companyAddress %}
+						<div class="mb-1">
+							{{ companyAddress|nl2br }}
+						</div>
+					{% endif %}
+
+					{{ companyPhoneNumber ? companyPhoneNumber }}
+					{{ companyEmailAddress ? ('<div><a class="footer__email-link o-link-anim" href="mailto:' ~ companyEmailAddress ~ '"><span>' ~ companyEmailAddress ~ '</span></a></div>')|raw }}
+				</div>
+
+				<div class="w-full md:w-6/12 lg:w-5/11 pl-1-5">
+					<ul class="list-reset mb-2">
+						{% for link in otherSiteLinks %}
+						<li>
+							{# These will become links when other sites are built #}
+							<span class="footer__site-links__link block border-t {{ loop|last ? 'border-b' }} border-white py-0-5 no-underline text-white">{{ link.text }}</span>
+
+							{# <span class="footer__site-links__link block border-t {{ loop|last ? 'border-b' }} border-white py-0-5 no-underline text-white" href="{{ link.url }}" {{ link.target ? 'target="{{ link.target }}"' }}>{{ link.text }}</span> #}
+						</li>
+						{% endfor %}
+					</ul>
+
+					{% if footerMetaLinks %}
+					<ul class="footer__meta-links flex flex-wrap list-reset text-sm -ml-0-5 mb-1">
+						{% for entry in footerMetaLinks %}
+						{% set linkUrl = entry.getUrl() %}
+						{% set linkText = entry.title %}
+						{% set linkTarget = null %}
+
+						<li class="footer__meta-links__item">
+							<a class="footer__meta-links__link block {{ not loop|last ? 'border-r' }} border-white px-0-5" href="{{ linkUrl }}" {{ linkTarget ? 'target="{{ linkTarget }}"' }} title="{{ linkText }}">{{ linkText }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+
+					{% if footerNote %}
+					<p class="footer__footnote">&copy; {{ 'now'|date('Y') }} {{ footerNote }}</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

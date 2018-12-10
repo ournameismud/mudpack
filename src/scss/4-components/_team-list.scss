@@ -1,0 +1,41 @@
+.c-team-list {
+}
+
+.c-team-list__photo-container {
+	background-image: url('/dist/img/svg/tile.svg');
+	background-repeat: repeat;
+	// mix-blend-mode: color-dodge;
+}
+
+.c-team-list__photo {
+	@apply block;
+
+	backface-visibility: hidden;
+	transition: opacity 200ms;
+}
+
+.c-team-list__link h2 {
+	transition: opacity 200ms;
+}
+
+.c-team-list__link:hover {
+	.c-team-list__photo,
+	h2 {
+		opacity: 0.5;
+	}
+}
+
+.c-team-profile__back-link.o-link-anim span::after {
+	@apply bg-black opacity-50;
+}
+
+.c-team-list__placeholder {
+	@apply block;
+
+	background-image: url('/dist/img/svg/tile.svg');
+	background-repeat: repeat;
+	padding-top: 121.66666667%;
+	background-size: 50px 50px;
+	// background-color: #f0f0f0;
+	height: 0;
+}

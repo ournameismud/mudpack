@@ -1,0 +1,139 @@
+// .c-group-factors {
+// 	margin: 10vh 0;
+// }
+
+.c-group-factors__header {
+	font-size: responsive 23px 40px;
+}
+
+.c-group-factors__header-container {
+	top: 50%;
+	transform: translateY(0%);
+	transition: opacity 650ms, transform 650ms ease-in-out;
+	transform-origin: left top;
+
+	&.is-reduced {
+		transform: translateY(100%) translateY(-30vh) scale(0.55);
+		opacity: 0.5;
+	}
+}
+
+.c-group-factors__header-text {
+	transition: opacity 650ms, transform 650ms ease-in-out;
+	transform-origin: left top;
+}
+
+.c-group-factors__text {
+	opacity: 0;
+	transform: translateY(-90px);
+	transition: opacity 600ms, transform 600ms ease-out;
+
+	&.is-visible {
+		opacity: 1;
+		transform: translateY(-105px);
+		transition: opacity 600ms 400ms, transform 600ms ease-out 400ms;
+	}
+}
+
+.c-group-factors__inner {
+	@screen md {
+		min-height: 100vh;
+	}
+}
+
+.c-group-factors__title {
+	font-size: responsive 23px 40px;
+}
+
+[data-scroll] > .c-group-factors__child {
+	transition: opacity 650ms 300ms;
+
+	@screen md {
+		opacity: 0;
+	}
+}
+
+.c-group-factors__text-scroll .c-group-factors__child[data-scroll='in'] {
+	opacity: 1;
+	display: flex;
+}
+
+[data-scroll='out'] .c-group-factors__child {
+	transition: opacity 300ms 0ms;
+
+	@screen md {
+		opacity: 0;
+	}
+}
+
+.c-group-factors__diamond {
+	@apply bg-truewhite;
+
+	color: #919497;
+
+	@screen md {
+		@apply absolute pin-l p-0-5;
+
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	a.is-active ~ & {
+		@apply text-black;
+	}
+}
+
+.c-group-factors__nav {
+	@apply absolute pin-l pin-b p-0-5 text-black w-screen flex justify-center items-center;
+
+	transition: transform 400ms, opacity 400ms;
+
+	@screen md {
+		@apply opacity-0 fixed pin-r pin-t h-full w-auto h-auto;
+
+		left: auto;
+		transform: translate3d(100%, 0, 0);
+	}
+
+	&.is-visible {
+		@apply opacity-100 border-grey-dark;
+
+		transform: translate3d(0, 0, 0);
+
+		.c-group-factors__nav-list::before {
+			opacity: 1;
+		}
+	}
+
+	&:hover {
+		.c-group-factors__nav-link {
+			@apply opacity-50;
+		}
+
+		.c-group-factors__nav-link:hover {
+			@apply opacity-100;
+		}
+	}
+}
+
+.c-group-factors__nav-list {
+	@screen lg {
+		&::before {
+			@apply w-px my-1 absolute pin-y pin-l;
+
+			content: '';
+			border-left: 1px dashed #a8abae;
+			opacity: 0;
+			transition: opacity 300ms 300ms;
+		}
+	}
+}
+
+.c-group-factors__nav-link {
+	@apply opacity-50;
+
+	transition: opacity 200ms;
+
+	&.is-active {
+		@apply opacity-100;
+	}
+}

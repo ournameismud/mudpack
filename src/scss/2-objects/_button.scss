@@ -1,0 +1,11 @@
+.o-btn {
+	@apply border border-white appearance-none text-white px-1 py-0-75 max-w-full text-center;
+
+	min-width: 170px;
+	font-size: responsive 16px 18px;
+	transition: background-color 200ms, color 200ms;
+}
+
+.o-btn:hover {
+	@apply bg-white text-black;
+}

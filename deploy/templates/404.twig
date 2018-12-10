@@ -1,0 +1,15 @@
+{% embed '/wrapper/_layout' with {
+    critical: null
+} %}
+
+{% block content %}
+
+{% include '/components/_hero.twig' with {
+	title: null,
+	intro: '404 – Page does not exist',
+	modifier: 'full'
+} %}
+
+{% endblock %}
+
+{% endembed %}

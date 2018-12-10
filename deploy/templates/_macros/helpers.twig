@@ -1,0 +1,140 @@
+{#
+  Get symbol markup
+  @param symbol: The symbol name (same as the svg file name, i.e. twitter, not icon-twitter)
+#}
+{% macro symbol(name, classes) %}
+	<i class="icon icon--{{ name }}{{ classes ? ' ' ~ classes }}">
+		<svg>
+			<use class="no-barba pointer-events-none" xlink:href="#{{ name }}"></use>
+		</svg>
+	</i>
+{% endmacro %}
+
+
+
+{% macro social(entry, className) %}
+	{% set list = ['email', 'facebook', 'instagram', 'linkedin', 'twitter', 'website'] %}
+	<ul class="flex items-center list-reset">
+		{% for item in list %}
+			{% if entry[item.key] is defined %}
+				<li>
+					<a class="block no-underline p-2 mr-2 {{ className }}" href="{{ item.value }}">
+						{{ _self.symbol('ui-' ~ item.key) }}
+					</a>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endmacro %}
+
+
+{% macro image(image, className) %}
+	{% set base64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+	{% set ratio = (image.height / image.width) * 100 ~ '%' %}
+	{# <div class="w-full relative" style="padding-top: {{ ratio }}"> #}
+		<noscript>
+			<img class="{{ className }}" src="{{ image.src }}"  width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" />
+		</noscript>
+		<img class="lazyload {{ className }}" src="{{ base64 }}" data-src="{{ image.src }}"   width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" />
+	{# </div> #}
+{% endmacro %}
+
+
+{% macro srcset(image, sizes, className) %}
+	{% set base64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+	{% set sizes = sizes|default('100vw') %}
+	{# <div class="w-full relative" style="padding-top: {{ image.aspect ~ '%' }}"> #}
+		<noscript>
+			<img class="{{ className }}" src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.alt }}" sizes="{{ sizes }}" width="{{ image.width }}" height="{{ image.height }}" />
+		</noscript>
+		<img class="w-full h-full object-cover lazyload {{ className }}" src="{{ base64 }}" data-src="{{ image.src }}" data-srcset="{{ image.srcset }}" data-sizes="{{ sizes }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}" />
+	{# </div> #}
+{% endmacro %}
+
+{% macro imageAspect(image) %}
+	{% set base64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+	{% set ratio = (image.height / image.width) * 100 ~ '%' %}
+	<div class="w-full relative" style="padding-top: {{ ratio }}">
+		<noscript>
+			<img class="absolute pin object-fit w-full h-full" src="{{ image.url }}"  width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" />
+		</noscript>
+		<img class="lazyload absolute pin object-fit w-full h-full" src="{{ base64 }}" data-src="{{ image.url }}"   width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" />
+	</div>
+{% endmacro %}
+
+{% macro srcsetAspect(image, sizes, className) %}
+	{% set base64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+	{% set sizes = sizes|default('100vw') %}
+	{# <div class="w-full relative" style="padding-top: {{ image.aspect ~ '%' }}"> #}
+		<noscript>
+			<img class="absolute object-cover w-full h-full {{ className }}" src="{{ image.src }}" srcset="{{ image.srcset }}" alt="{{ image.alt }}" sizes="{{ sizes }}" width="{{ image.width }}" height="{{ image.height }}" />
+		</noscript>
+		<img class="lazyload absolute object-cover w-full h-full {{ className }}" src="{{ base64 }}" data-src="{{ image.src }}" data-srcset="{{ image.srcset }}" data-sizes="{{ sizes }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}" />
+	{# </div> #}
+{% endmacro %}
+
+{% macro maybeLink(content, link, options) %}
+	{% set className = options is defined and options.className is defined ? options.className : '' %}
+	{% set key = options is defined and options.key is defined ? options.key : 'url' %}
+
+	{% if link is defined and link[key]|length %}
+		<a href="{{ link[key] }}" {% if className|length %}class="{{ className }}"{% endif %}>
+			{{ content|raw }}
+		</a>
+	{% else %}
+		{{ content }}
+	{% endif %}
+{% endmacro %}
+
+{% macro video(mediaUrl, type, loop, autoplay, showControls, poster, fallback) %}
+	{% if mediaUrl is defined and mediaUrl %}
+		{% if (siteUrl in mediaUrl) or type == 'local' %}
+			<video src="{{ mediaUrl }}" class="js-player" playsinline
+				{{ autoplay ? 'autoplay muted="muted"' : '' }} 
+				{{ loop ? 'loop' : '' }} 
+				{{ showControls ? 'controls' : '' }} 
+				preload="none"
+				{% if showControls %}data-plyr-config="{ 'controls': '["play","volume","mute"]' }"{% endif %}>
+			</video>
+			{% if poster|length %}
+				<img class="hidden video-fallback lazyload" style="position: relative" 
+					src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' alt="" 
+					data-src="{{ poster.url is defined ? poster.url : poster }}"
+					{% if poster.srcset is defined %}
+						data-srcset="{{ poster.srcset }}"
+					{% endif %}
+				>
+			{% endif %}
+
+		{% else %}
+			{% set source = 'vimeo' in mediaUrl ? 'vimeo' : 'youtube' %}
+			{% set id = source == 'vimeo' ? mediaUrl|split('vimeo.com/')[1] : mediaUrl|split('?v=')[1] %}
+			{% set sourceUrl = source == 'vimeo' 
+				? 'https://player.vimeo.com/video/' ~ id ~ '?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media' 
+				: 'https://www.youtube.com/embed/' ~ id ~ '?origin=' ~ siteUrl ~ '&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1' %}
+
+			<div class="js-player" style="padding:56.25% 0 0 0;position:relative;">
+				<iframe class="w-full" style="position:absolute;top:0;left:0;width:100%;height:100%;"
+					src="{{ sourceUrl }}" allowfullscreen allowtransparency 
+					allow="autoplay" 
+					{{ autoplay ? 'autoplay muted="muted"' : '' }} 
+					{{ loop ? 'loop' : '' }} 
+					{{ showControls ? 'controls' : '' }}
+					data-plyr-config="{ 'controls': '[{{ showControls ? '"play","volume","mute"' : '' }}]', 'loop': {{ loop }}, 'autoplay': {{ autoplay }} }">
+				</iframe>
+				{% if poster|length %}
+					<img class="hidden video-fallback lazyload" src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' alt="" data-src="{{ poster }}">
+				{% endif %}
+
+				{% if fallback|length %}
+					<img class="lazyload hidden" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{ fallback.url }}" data-srcset="{{ fallback.srcset }}" alt="" />
+			
+					<noscript>
+						<img src="{{ fallback.url }}" alt="" />
+					</noscript>
+				{% endif %}	
+			</div>	
+			<script src="https://player.vimeo.com/api/player.js"></script>
+			{% endif %}
+	{% endif %}
+{% endmacro %}

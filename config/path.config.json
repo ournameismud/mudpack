@@ -1,0 +1,48 @@
+{
+	"src": "./src/",
+	"craft": "./deploy/",
+	"templates": "./deploy/templates/",
+	"static": "./static/",
+	"public": "./deploy/public/",
+	"proxy": "http://local.sgfg.com",
+
+	"critical": [
+		{
+			"url": "/",
+			"css": "homepage"
+		}
+	],
+
+	"images": "**/*.+(jpg|jpeg|png|gif|webp)",
+	"css": "**/*.css",
+	"svgs": "**/*.svg",
+	"twig": "**/*.twig",
+
+	"cacheTag": {
+		"file": "_layout.twig",
+		"dir": "./deploy/templates/wrapper"
+	},
+
+	"symbols": {
+		"src": "**/ui-*.svg",
+		"scss": "scss/1-base",
+		"html": "./deploy/templates/_svgs"
+	},
+
+	"js": {
+		"src": "js",
+		"dest": "dist/js",
+		"libs": ["./node_modules/picturefill/dist/picturefill.min.js"]
+	},
+
+	"scss": {
+		"src": ["scss/**/**/*.scss"],
+		"dest": "dist/css"
+	},
+
+	"files": {
+		"exclude": "**/*.+(jpg|jpeg|png|gif|svg|css|js)",
+		"dotFiles": ".*",
+		"include": "**/*.*"
+	}
+}

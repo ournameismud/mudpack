@@ -1,0 +1,15 @@
+.footer {
+}
+
+.footer__meta-links {
+}
+
+.footer__footnote {
+	font-size: rem(11px);
+}
+
+.footer__email-link {
+	span::after {
+		@apply bg-white;
+	}
+}

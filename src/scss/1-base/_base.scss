@@ -1,0 +1,167 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	font-style: normal;
+	font-weight: normal;
+}
+
+.no-js img.lazyload {
+	display: none;
+}
+
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}
+
+body {
+	@apply font-regular bg-black min-h-screen flex flex-col;
+
+	font-size: responsive 15px 18px;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: 'kern' 1;
+	font-kerning: normal;
+	line-height: 1.347826087;
+	letter-spacing: 0.014em;
+}
+
+/*
+	image defaults
+*/
+img,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+	class used for lazyloading images, combined with data-src
+*/
+.lazyload {
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+}
+
+/*
+	base wrapper class
+*/
+.wrapper {
+	@apply w-full max-w-wrapper px-1 mx-auto;
+
+	@screen md {
+		@apply px-2;
+	}
+}
+
+#page-wrapper {
+	@include calc-fluid('padding-top', 76px, 90px);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@apply font-regular;
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+h1,
+.h1 {
+	font-size: responsive 36px 50px;
+	line-height: 1.2;
+}
+
+h2,
+.h2 {
+	font-size: responsive 23px 50px;
+}
+
+h3,
+.h3 {
+	font-size: responsive 23px 40px;
+}
+
+h4,
+.h4 {
+	font-size: responsive 23px 40px;
+}
+
+h5,
+.h5 {
+	font-size: responsive 23px 40px;
+}
+
+h6,
+.h6 {
+	font-size: responsive 23px 40px;
+}
+
+.text-xl {
+	font-size: responsive 16px 26px;
+}
+
+.text-lg {
+	font-size: responsive 15px 23px;
+}
+
+.text-sm {
+	font-size: responsive 12px 14px;
+}
+
+p {
+	@apply mb-1;
+}
+
+a {
+	@apply no-underline;
+
+	color: inherit;
+}
+
+.list-bulleted {
+	li {
+		@apply relative;
+	}
+
+	li::before {
+		@apply absolute h-full pin-t pin-l;
+
+		content: '';
+		width: 2em;
+		background-image: url('/dist/img/svg/ui-bullet.svg');
+		background-size: 12px 12px;
+		background-repeat: no-repeat;
+		background-position: 0 0.4em;
+	}
+}
+
+img {
+	@apply block w-full h-auto;
+}

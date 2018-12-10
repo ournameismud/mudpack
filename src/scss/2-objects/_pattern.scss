@@ -1,0 +1,8 @@
+.o-pattern {
+	@apply absolute h-full;
+
+	background-image: url('/dist/img/svg/tile.svg');
+	background-repeat: repeat;
+	background-attachment: fixed;
+	mix-blend-mode: color-dodge;
+}

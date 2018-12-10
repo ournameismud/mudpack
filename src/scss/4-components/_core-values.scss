@@ -1,0 +1,10 @@
+.c-core-value[data-scroll] {
+	@apply opacity-0;
+
+	transition: opacity 500ms 200ms;
+}
+
+.c-core-value[data-scroll='in'],
+.no-js .c-core-value {
+	@apply opacity-100;
+}

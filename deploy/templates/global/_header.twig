@@ -1,0 +1,37 @@
+{% set mainLinks = mainLinks|default(null) %}
+
+<header class="header fixed pin-t pin-x w-full bg-black text-white z-50" data-behaviour="StickyHeader" data-ui="Draw" data-key="menu" data-query="(max-width: 768px)" data-ui-options='{
+        "target": "#site-menu", 
+        "openButton": "[data-menu-opener]", 
+        "closeButton": "[data-menu-closer]"
+    }'>
+	<div class="wrapper">
+		<div class="header__inner flex flex-wrap justify-between items-center">
+			<div class="md:w-5/12 lg:w-6/12">
+				<a class="header__logo block" href="/" title="Home">
+					{{ source('/_svgs/logo.svg') }}
+				</a>
+			</div>
+
+			<div class="md:w-7/12 lg:w-6/12">
+				<button class="o-burger -mr-1 md:hidden" type="button" data-menu-opener id="open-menu">
+					<span class="o-burger__bar"></span>
+				</button>
+
+				{% if mainLinks %}
+				<div class="header__nav absolute pin-x w-full h-screen md:h-auto md:relative" id="site-menu">
+					<ul class="header__nav-list list-reset flex flex-wrap flex-col items-start md:flex-row md:items-center pt-2-5 md:pt-0 md:-ml-0-25" id="menu-inner">
+						{% for link in mainLinks %}
+						<li class="header__nav-item w-full md:w-auto">
+							<a href="{{ link.url }}" class="header__nav-link block px-1 py:py-0-5 md:p-1 no-underline text-white">
+								<span class="header__nav-span relative">{{ link.text }}</span>
+							</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</header>

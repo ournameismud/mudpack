@@ -1,0 +1,67 @@
+/* stylelint-disable */
+
+.icon {
+	position: relative;
+	display: block;
+	max-width: 100%;
+
+  > svg {
+    position: absolute;
+		width: 100%;
+		max-width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    height: 0; 
+    width: auto;
+  }
+}
+
+.icon--ui-arrow-down {
+  width: rem(71.216px);
+  &:after {
+    padding-bottom: 42.25352112676056%;
+  }
+}
+.icon--ui-bullet {
+  width: rem(8.696px);
+  &:after {
+    padding-bottom: 100%;
+  }
+}
+.icon--ui-diamond-filled {
+  width: rem(12.707px);
+  &:after {
+    padding-bottom: 100%;
+  }
+}
+.icon--ui-diamond {
+  width: rem(12.707px);
+  &:after {
+    padding-bottom: 100%;
+  }
+}
+
+
+
+
+$icon--ui-arrow-down-width: 71px;
+$icon--ui-arrow-down-height: 30px;
+$icon--ui-arrow-down-ratio: 0.4225352112676056;
+
+$icon--ui-bullet-width: 8px;
+$icon--ui-bullet-height: 8px;
+$icon--ui-bullet-ratio: 1;
+
+$icon--ui-diamond-filled-width: 12px;
+$icon--ui-diamond-filled-height: 12px;
+$icon--ui-diamond-filled-ratio: 1;
+
+$icon--ui-diamond-width: 12px;
+$icon--ui-diamond-height: 12px;
+$icon--ui-diamond-ratio: 1;

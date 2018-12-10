@@ -1,0 +1,33 @@
+@function stripunits($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+$start-fluid-width: 320px;
+$stop-fluid-width: 1100px;
+
+@mixin calc-fluid(
+	$property,
+	$min-type-size,
+	$max-type-size,
+	$start-fluid-width: $start-fluid-width,
+	$stop-fluid-width: $stop-fluid-width
+) {
+	#{$property}: $min-type-size;
+
+	@media only screen and (min-width: $start-fluid-width) {
+		#{$property}: calc(
+			#{$min-type-size} + (
+					#{stripunits($max-type-size)} - #{stripunits($min-type-size)}
+				) * ((100vw - #{$start-fluid-width}) /
+						(
+							#{stripunits($stop-fluid-width)} - #{stripunits(
+									$start-fluid-width
+								)}
+						))
+		);
+	}
+
+	@media only screen and (min-width: $stop-fluid-width) {
+		#{$property}: $max-type-size;
+	}
+}
