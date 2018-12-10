@@ -22,9 +22,9 @@
 - install the dependencies (npm install / yarn)
 - run `npm run gen-cert` to create https tokens
 - add an empty database via Sequel Pro
-- update your `env` file to include local DB details
+- update your `.env.php` file to include local DB details
 - `cd` into your `deploy` folder and run `composer update`
-- run `./craft setup/security-key` and create a security key, you can then abort this task and copy the key into your `env` file
+- run `./craft setup/security-key` and create a security key, you can then abort this task and copy the key into your `.env.php` file
 - create a MAMP or Valet instance that points to your local domain
 - update the `proxy` setting in your `config/path.config.json` file to point to your local domain (setup in MAMP / Valet)
 - `npm run start` will boot up the cms server
