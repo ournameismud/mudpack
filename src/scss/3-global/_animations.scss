@@ -1,22 +1,27 @@
-[data-animate='hero'] {
+[data-animate='fadeIn'] {
 	opacity: 0;
-	transform: translateY(15px);
-	transition: transform 500ms ease-out, opacity 400ms;
 
-	[data-transition-state='on-load'] &,
-	[data-transition-state='done'] & {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	.no-js & {
-		animation: animateIn 500ms forwards 500ms;
+	&.is-animated {
+		animation: fadeIn 500ms forwards;
 	}
 }
 
-@keyframes animateIn {
+[data-animate='fadeOut'] {
+	opacity: 1;
+
+	&.is-animated {
+		animation: fadeOut 500ms forwards;
+	}
+}
+
+@keyframes fadeOut {
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
 	100% {
 		opacity: 1;
-		transform: translateY(0);
 	}
 }
