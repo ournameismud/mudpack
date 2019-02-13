@@ -1,7 +1,7 @@
 {% set entry = entry|default(null) %}
 
 {% embed '/wrapper/_layout' with {
-  critical: entry.type.handle ~ '.css'|default('homepage.css')
+  critical: entry ? entry.type.handle ~ '.css'|default('homepage.css')
 } %}
 
 {# {% set data = fetchData(url('api/pages/example')) %} #}
