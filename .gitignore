@@ -16,16 +16,24 @@
 .env.php
 .env.sh
 .env
+/deploy/.env.php
+/deploy/.env.sh
+/deploy/.env
 
 # COMPOSER
 /vendor
+/deploy/vendor
 
 # CRAFT STORAGE
 /storage/*
 !/storage/.gitkeep
+/deploy/storage/*
 
 # ASSETS
 /web/assets/*
+/deploy/public/assets/*
+/deploy/public/resources/*
+/deploy/public/imager/*
 
 # BUILD FILES
 /bower_components/*
