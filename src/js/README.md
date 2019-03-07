@@ -42,8 +42,6 @@ https://spondocs.netlify.com/
 Some imports…
 
 ```javascript
-// console console.log util... console.log('message')
-import '@/plugins/console.logger'
 // The main app class
 import App from '@/core/App'
 ```
