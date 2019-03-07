@@ -84,7 +84,7 @@ export default class Draw {
 
 		$target.setAttribute('tabindex', '-1')
 		$target.setAttribute('aria-hidden', 'true')
-		$target.setAttribute('role', 'diaconsole.log')
+		$target.setAttribute('role', 'dialog')
 	}
 
 	removeAria = () => {
