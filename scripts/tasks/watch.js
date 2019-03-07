@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const staticFiles = require('./static')
+const staticFiles = require('./assets')
 const scss = require('./scss')
 const { getStaticPaths, getSrcPaths } = require('../utils/paths')
 
