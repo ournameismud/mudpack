@@ -2,7 +2,7 @@ import { TweenLite, CSSPlugin } from 'gsap/all'
 import eventBus from '@/core/modules/eventBus'
 
 const plugins = [CSSPlugin]
-log(plugins)
+console.log(plugins)
 
 const view = {
 	async onEnter({ next, ...rest }) {

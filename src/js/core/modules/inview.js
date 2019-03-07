@@ -75,11 +75,11 @@ export function inview(base = document, events = {}) {
  *
  * 	viewport = {
  *		enter: node => {
- *			log('exit', node)
+ *			console.log('exit', node)
  *		},
  *
  *		exit: node => {
- *			log('exit', node)
+ *			console.log('exit', node)
  *		}
  *	}
  * }

@@ -183,7 +183,7 @@ export const resizer = (function() {
  *	screens = {
  *		'(min-width: 1024px)': ({ match, ...rest }) => {
  *			if (match) {
- *				log(rest)
+ *				console.log(rest)
  *			}
  *		}
  *	}

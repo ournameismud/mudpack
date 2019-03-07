@@ -33,7 +33,7 @@ const historyManager = (() => {
 		// if 'POP'... i.e forward/backward
 		// emit the event
 		if (action === 'POP') {
-			log('hello')
+			console.log('hello')
 			eventBus.emit(Action.ROUTER_POP_EVENT, { pathname, state })
 		}
 	})

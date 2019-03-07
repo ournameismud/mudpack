@@ -46,7 +46,7 @@ export default class ExampleWithAllTheThings extends mix(Behaviour).with(
 	screens = {
 		'(min-width: 1024px)': ({ match, ...rest }) => {
 			if (match) {
-				log(rest)
+				console.log(rest)
 			}
 		}
 	}
@@ -57,11 +57,11 @@ export default class ExampleWithAllTheThings extends mix(Behaviour).with(
 
 	viewport = {
 		enter: () => {
-			// 	log('exit', node)
+			// 	console.log('exit', node)
 		},
 
 		exit: () => {
-			// 	log('exit', node)
+			// 	console.log('exit', node)
 		}
 	}
 

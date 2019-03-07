@@ -5,6 +5,7 @@ Spon.js is little framework to help manage javascript functionality for modern w
 The main idea behind this framework is to marry the two requirements together.
 
 ## js docs:
+
 https://spondocs.netlify.com/
 
 ### Behaviour Features:
@@ -41,8 +42,8 @@ https://spondocs.netlify.com/
 Some imports…
 
 ```javascript
-// console log util... log('message')
-import '@/plugins/logger'
+// console console.log util... console.log('message')
+import '@/plugins/console.logger'
 // The main app class
 import App from '@/core/App'
 ```
@@ -361,7 +362,7 @@ That’s 90% of behaviours.
 Back to `app.js`
 
 ```javascript
-import '@/plugins/logger'
+import '@/plugins/console.logger'
 import App from '@/core/App'
 import routes from '@/views' // the routes array used by the router!
 
@@ -455,7 +456,6 @@ const homePage = {
 		console.log('Home page onload')
 	}
 }
-
 
 const defaultRoutes = [
 	{
@@ -602,7 +602,7 @@ export default [
 
 Now `/about/team/` will get it’s own transition… more woot
 
-How about a blog… with some pagination
+How about a bconsole.log… with some pagination
 
 ```javascript
 import paginationExample from '@/views/loaders/pagination'
@@ -610,7 +610,7 @@ import paginationExample from '@/views/loaders/pagination'
 export default [
 	// saving the trees, removed some example code
 	{
-		path: '/blog/',
+		path: '/bconsole.log/',
 		view: {},
 		options: {
 			paginationParent: true
@@ -638,7 +638,7 @@ export default [
 ]
 ```
 
-Now… `/blog/p2/` will have one transition, and `/blog/any-other-slug/` will have another transition…
+Now… `/bconsole.log/p2/` will have one transition, and `/bconsole.log/any-other-slug/` will have another transition…
 
 And you can nest… for ever… but you probably won’t
 

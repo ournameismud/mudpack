@@ -121,7 +121,7 @@ export default class Accordion {
 
 	destroy = () => {
 		this.unmount()
-		log('kill it')
+		console.log('kill it')
 	}
 
 	/** *
