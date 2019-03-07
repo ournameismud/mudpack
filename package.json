@@ -84,6 +84,7 @@
 		"spon-slide": "^1.0.8",
 		"sponlax": "^2.0.3",
 		"tailwindcss-triangle-after": "^1.1.0",
+		"terser-webpack-plugin": "^1.2.3",
 		"validate.js": "^0.12.0",
 		"vanilla-modal": "^1.6.5"
 	},
