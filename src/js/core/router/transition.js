@@ -29,7 +29,7 @@ export default {
 	el: '.page-child',
 
 	onLoad(props) {
-		log('onLoad', props) // eslint-disable-line no-console
+		console.log('onLoad', props) // eslint-disable-line no-console
 	},
 
 	shouldUnmount() {
@@ -41,7 +41,7 @@ export default {
 	},
 
 	onError: props => {
-		log('error loading page', props) // eslint-disable-line no-console
+		console.log('error loading page', props) // eslint-disable-line no-console
 	},
 
 	updateDom({ wrapper, newHtml, title }) {
@@ -51,21 +51,21 @@ export default {
 	},
 
 	onExit({ next }) {
-		log('on exit')
+		console.log('on exit')
 		// console.table({ from: from.data.path, to: to.data.path, action }) // eslint-disable-line
 		next()
 	},
 
 	onAfterExit() {
-		log('after exit')
+		console.log('after exit')
 	},
 
 	onEnter({ next }) {
-		log('on enter')
+		console.log('on enter')
 		next()
 	},
 
 	onAfterEnter() {
-		log('on after enter')
+		console.log('on after enter')
 	}
 }

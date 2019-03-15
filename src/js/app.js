@@ -1,4 +1,3 @@
-import '@/plugins/logger'
 
 import webfontloader from '@/plugins/webfontloader'
 import 'lazysizes'

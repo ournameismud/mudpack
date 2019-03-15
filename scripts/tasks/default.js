@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const clean = require('./clean')
-const staticFiles = require('./static')
+const assets = require('./assets')
 const scss = require('./scss')
 const bundle = require('./javascript')
 const purge = require('./purge')
@@ -11,21 +11,17 @@ const criticalCSS = require('./critical')
 const defaultTask = gulp.series(
 	clean,
 	cacheTags,
-	staticFiles,
+	assets,
 	scss,
 	watch,
 	serverProxy
 )
 
-const build = gulp.series(
-	clean,
-	gulp.parallel(cacheTags, staticFiles, bundle),
-	scss
-)
+const build = gulp.series(clean, gulp.parallel(cacheTags, assets, bundle), scss)
 
 const production = gulp.series(
 	clean,
-	gulp.parallel(cacheTags, staticFiles, bundle),
+	gulp.parallel(cacheTags, assets, bundle),
 	scss,
 	purge,
 	criticalCSS,

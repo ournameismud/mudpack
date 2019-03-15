@@ -57,7 +57,7 @@ export default (() => {
 	// add listen to events...
 	worker.addEventListener('message', ({ data }) => {
 		data.forEach(({ key, data }) => {
-			// log(`fetched: ${key}`)
+			// console.log(`fetched: ${key}`)
 			if (data) {
 				cache.set(key, { data, status: 'cached' })
 			} else {

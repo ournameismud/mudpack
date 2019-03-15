@@ -1,4 +1,5 @@
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const { getSrcPaths, getPublicPath } = require('../utils/paths')
 
 const {
@@ -36,7 +37,19 @@ module.exports = {
 					minChunks: 2
 				}
 			}
-		}
+		},
+		minimizer: [
+			new TerserPlugin({
+				terserOptions: {
+					output: {
+						comments: false
+					},
+					compress: {
+						drop_console: true
+					}
+				}
+			})
+		]
 	},
 
 	resolve: {
